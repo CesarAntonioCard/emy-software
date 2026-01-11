@@ -1,0 +1,258 @@
+---
+import { FolderArchive } from "@lucide/astro";
+
+const products = [
+  {
+    id: "emycont",
+    name: "EMYCont",
+    shortDescription: "Software contable que optimiza su gestión contable.",
+    description: `EMYCONT, software de Contabilidad y Finanzas para Estudios Contables y empresas.
+Características:
+- Personalizar Plan Contable General Empresarial
+- Bimonetario
+- Multiusuario y MultiEmpresa
+- Backup automático
+- Lectura de XML y reportes automáticos
+- Modular y extensible`,
+    demoLink: "https://emysoftware.com/descarga/SetupEmycont.zip",
+  },
+  {
+    id: "emyplan",
+    name: "EMYPlan",
+    shortDescription: "Software de planillas que gestiona pagos a su personal.",
+    description: `EMYPLAN, Planilla BiMonetario, control de horas extras y normas laborales.
+Características:
+- Registro de datos de trabajadores
+- Bimonetario
+- Multiusuario y MultiEmpresa
+- Emisión de boletas, resúmenes y reportes
+- Backup y modular`,
+    demoLink: "https://emysoftware.com/descarga/SetupEmyplan.zip#",
+  },
+  {
+    id: "emygest",
+    name: "EMYGEST",
+    shortDescription:
+      "Software de gestión comercial (Facturación, Almacén, Cuentas).",
+    description: `EMYGEST, gestiona tu parte comercial.
+Características:
+- Registro de productos, proveedores y clientes
+- Multiempresa y bimonetario
+- Control de inventario y reportes
+- Backup y modular`,
+    demoLink: "https://emysoftware.com/descarga/SetupEmygest.zip",
+  },
+  {
+    id: "emyacti",
+    name: "EMYActi",
+    shortDescription: "Software de activos fijos y depreciación mensual/anual.",
+    description: `EMYActi, gestiona la depreciación de activos fijos.
+Características:
+- Control completo de cuentas
+- Reportes automáticos`,
+    demoLink: "https://emysoftware.com/descarga/SetupEmyacti.zip",
+  },
+];
+---
+
+<div
+  id="productos"
+  class="py-20
+         bg-linear-to-br from-gray-50 to-green-50
+         dark:from-[rgb(var(--surface))] dark:to-[rgb(var(--surface-muted))]
+         transition-colors duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl md:text-4xl font-bold
+                 text-[rgb(var(--text-primary))] dark:text-[rgb(var(--text-primary))]"
+      >
+        Nuestros Productos
+      </h2>
+      <p
+        class="mt-4 text-lg text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))]"
+      >
+        Explora nuestras soluciones y descarga las demos para probarlas.
+      </p>
+    </div>
+
+    <div
+      class="grid gap-8 md:grid-cols-2 lg:grid-cols-2 justify-center max-w-5xl mx-auto"
+    >
+      {
+        products.map((product) => (
+          <>
+            <div
+              class="group relative p-6 
+                     bg-white dark:bg-[rgb(var(--surface-card))]
+                     rounded-2xl shadow-md 
+                     border border-gray-200 dark:border-[rgb(var(--border))]
+                     hover:shadow-xl hover:scale-[1.02] 
+                     transition-all duration-300"
+            >
+              <h3
+                class="text-xl font-bold 
+                         text-[rgb(var(--text-primary))] dark:text-[rgb(var(--text-primary))] 
+                         mb-2"
+              >
+                {product.name}
+              </h3>
+              <p class="text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))] mb-6">
+                {product.shortDescription}
+              </p>
+
+              <div class="flex flex-col sm:flex-row gap-3">
+                <button
+                  type="button"
+                  class="inline-flex items-center justify-center gap-2 px-4 py-2.5 
+                         bg-[rgb(var(--accent))] dark:bg-[rgb(var(--accent))]
+                         text-white rounded-lg font-semibold
+                         hover:bg-[rgb(var(--accent-hover))] dark:hover:bg-[rgb(var(--accent-strong))]
+                         transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105"
+                  data-modal-trigger={`modal-${product.id}`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4" />
+                    <path d="M12 8h.01" />
+                  </svg>
+                  Más información
+                </button>
+
+                <a
+                  href={product.demoLink}
+                  download
+                  class="inline-flex items-center justify-center gap-2 px-4 py-2.5 
+                         bg-gray-100 dark:bg-[rgb(var(--surface-muted))]
+                         text-[rgb(var(--text-primary))] dark:text-[rgb(var(--text-primary))]
+                         border border-gray-300 dark:border-[rgb(var(--border))]
+                         rounded-lg font-semibold
+                         hover:bg-gray-200 dark:hover:bg-[rgb(var(--surface-dark-input))]
+                         transition-all duration-200 shadow-sm hover:shadow-md"
+                >
+                  <FolderArchive class="w-5 h-5" />
+                  Descargar Demo
+                </a>
+              </div>
+            </div>
+
+            <div
+              id={`modal-${product.id}`}
+              class="fixed inset-0 z-50 hidden items-center justify-center 
+                     bg-black/70 dark:bg-black/85 backdrop-blur-md
+                     p-4 transition-all duration-300"
+            >
+              <div
+                class="bg-white dark:bg-[rgb(var(--surface-card))]
+                       rounded-2xl max-w-3xl w-full mx-4 p-8 relative 
+                       shadow-2xl border-2 border-gray-200 dark:border-[rgb(var(--border))]
+                       transform transition-all duration-300"
+                data-modal-content
+              >
+                <button
+                  class="absolute top-4 right-4 
+                         text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))]
+                         hover:text-[rgb(var(--text-primary))] dark:hover:text-white
+                         text-2xl font-bold transition-all duration-200
+                         w-10 h-10 flex items-center justify-center rounded-full 
+                         hover:bg-gray-200 dark:hover:bg-[rgb(var(--surface-muted))]
+                         hover:rotate-90"
+                  data-close
+                  aria-label="Cerrar modal"
+                >
+                  ✕
+                </button>
+                <div class="mb-6">
+                  <div
+                    class="inline-flex items-center justify-center w-12 h-12 rounded-xl 
+                              bg-gradient-to-br from-[rgb(var(--accent))] to-[rgb(var(--accent-strong))]
+                              mb-4 shadow-lg"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6 text-white"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                      <line x1="8" y1="21" x2="16" y2="21" />
+                      <line x1="12" y1="17" x2="12" y2="21" />
+                    </svg>
+                  </div>
+                  <h3
+                    class="text-3xl font-bold mb-2
+                           text-[rgb(var(--text-primary))] dark:text-[rgb(var(--text-primary))]"
+                  >
+                    {product.name}
+                  </h3>
+                  <div class="h-1 w-20 bg-gradient-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent-strong))] rounded-full" />
+                </div>
+                <p
+                  class="text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))] 
+                          whitespace-pre-line leading-relaxed text-base"
+                >
+                  {product.description}
+                </p>
+              </div>
+            </div>
+          </>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Open modal when clicking "Más información" button
+    document.querySelectorAll("[data-modal-trigger]").forEach((button) => {
+      const modalId = button.getAttribute("data-modal-trigger");
+      if (!modalId) return;
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+      button.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      });
+    });
+
+    document.querySelectorAll("[data-modal-content]").forEach((content) => {
+      content.addEventListener("click", (e) => e.stopPropagation());
+    });
+
+    document.querySelectorAll('[id^="modal-"]').forEach((modal) => {
+      modal.addEventListener("click", () => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      });
+      const closeBtn = modal.querySelector("[data-close]");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        });
+      }
+    });
+
+    document.querySelectorAll("[data-demo]").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    });
+  });
+</script>

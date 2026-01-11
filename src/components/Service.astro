@@ -1,0 +1,109 @@
+---
+import { Code, Layout, BookOpen, Users, Database } from "@lucide/astro";
+
+const services = [
+  {
+    icon: Code,
+    title: "Desarrollo de Software a Medida",
+    description:
+      "Creamos aplicaciones personalizadas que se adaptan perfectamente a los requerimientos de tu negocio.",
+    color: "from-green-500 to-green-600",
+  },
+  {
+    icon: Layout,
+    title: "Análisis y Diseño de Sistemas",
+    description:
+      "Diseñamos arquitecturas de software eficientes y escalables para tus proyectos.",
+    color: "from-emerald-500 to-emerald-600",
+  },
+  {
+    icon: BookOpen,
+    title: "Capacitación en Software",
+    description:
+      "Ofrecemos formación especializada para que tu equipo domine las herramientas y procesos tecnológicos.",
+    color: "from-teal-500 to-teal-600",
+  },
+  {
+    icon: Users,
+    title: "Asesoría para PYMES",
+    description:
+      "Brindamos consultoría estratégica para optimizar tus procesos y aprovechar la tecnología al máximo.",
+    color: "from-lime-600 to-lime-700",
+  },
+  {
+    icon: Database,
+    title: "Aplicaciones con SQL Server",
+    description:
+      "Desarrollamos y optimizamos bases de datos robustas y seguras con SQL Server.",
+    color: "from-green-600 to-emerald-700",
+  },
+];
+---
+
+<section
+  id="servicios"
+  class="py-20
+         bg-linear-to-br from-gray-50 to-green-50
+         dark:from-[rgb(var(--surface))] dark:to-[rgb(var(--surface-muted))]
+         transition-colors duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span
+        class="text-[rgb(var(--accent))] dark:text-[rgb(var(--accent-strong))]
+                   font-semibold text-sm uppercase tracking-wide"
+      >
+        Nuestros Servicios
+      </span>
+      <h2
+        class="mt-3 text-3xl md:text-4xl font-bold
+               text-[rgb(var(--text-primary))] dark:text-[rgb(var(--text-primary))]"
+      >
+        Soluciones Completas para tu Negocio
+      </h2>
+      <p
+        class="mt-4 text-lg text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))]"
+      >
+        Ofrecemos una gama de servicios para ayudar a tu empresa a crecer y
+        adaptarse a las necesidades tecnológicas actuales.
+      </p>
+    </div>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+    >
+      {
+        services.map((service, index) => {
+          const Icon = service.icon;
+          return (
+            <div
+              class={`group p-8 rounded-2xl 
+                bg-white dark:bg-[rgb(var(--surface-card))]
+                border border-gray-200 dark:border-[rgb(var(--border))]
+                hover:border-transparent hover:shadow-2xl dark:hover:shadow-xl
+                transition-all duration-300 hover:-translate-y-1
+                ${index >= 3 ? "justify-self-center" : ""}`}
+            >
+              <div
+                class={`w-14 h-14 rounded-xl flex items-center justify-center mb-5 
+                 bg-linear-to-br ${service.color} 
+                  dark:from-[rgb(var(--accent))] dark:to-[rgb(var(--accent-strong))]
+                  group-hover:scale-110 transition-transform duration-300 shadow-md`}
+              >
+                <Icon class="w-6 h-6 text-white" />
+              </div>
+
+              <h3 class="text-xl font-bold text-[rgb(var(--text-primary))] dark:text-[rgb(var(--text-primary))] mb-3">
+                {service.title}
+              </h3>
+
+              <p class="text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))] leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

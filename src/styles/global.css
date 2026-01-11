@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --surface: 249 250 251;
+    --surface-muted: 243 244 246;
+    --surface-white: 255 255 255;
+    --surface-overlay: 255 255 255 / 0.95;
+    --surface-card: 255 255 255;
+    --surface-dark-input: 40 44 60;
+
+    --text-primary: 17 24 39;
+    --text-secondary: 55 65 81;
+    --text-muted: 107 114 128;
+
+    --accent: 22 163 74;
+    --accent-strong: 21 128 61;
+    --accent-hover: 22 101 52;
+
+    --success: 34 197 94;
+    --success-strong: 22 163 74;
+
+    --dark: 23 23 23;
+    --dark-strong: 10 10 10;
+
+    --divider: 229 231 235;
+    --border: 229 231 235;
+  }
+
+  .dark {
+    --surface: 17 24 28;
+    --surface-muted: 28 36 43;
+    --surface-white: 38 48 56;
+    --surface-overlay: 17 24 28 / 0.98;
+    --surface-card: 28 36 43;
+    --surface-dark-input: 38 48 56;
+
+    --text-primary: 248 250 252;
+    --text-secondary: 226 232 240;
+    --text-muted: 156 163 175;
+
+    --accent: 34 197 94;
+    --accent-strong: 74 222 128;
+    --accent-hover: 134 239 172;
+
+    --success: 34 197 94;
+    --success-strong: 74 222 128;
+
+    --dark: 248 250 252;
+    --dark-strong: 226 232 240;
+
+    --divider: 48 58 68;
+    --border: 48 58 68;
+  }
+
+  body {
+    background-color: rgb(var(--surface));
+    color: rgb(var(--text-primary));
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: rgb(var(--text-primary));
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+  }
+
+  p,
+  span,
+  label {
+    color: rgb(var(--text-muted));
+  }
+
+  a {
+    color: rgb(var(--accent));
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  a:hover {
+    color: rgb(var(--accent-strong));
+    text-decoration: underline;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border-width: 1px;
+    border-color: rgb(var(--border));
+    background-color: rgb(var(--surface-white));
+    color: rgb(var(--text-primary));
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+  }
+
+  .dark input,
+  .dark textarea,
+  .dark select {
+    background-color: rgb(var(--surface-dark-input));
+    border-color: rgb(var(--border));
+    color: rgb(var(--text-primary));
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: 0 0 0 2px rgb(var(--accent));
+  }
+
+  button {
+    border-radius: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    color: white;
+    background-image: linear-gradient(
+      to bottom right,
+      rgb(var(--accent)),
+      rgb(var(--accent-strong))
+    );
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+
+  button:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .card {
+    background-color: rgb(var(--surface-card));
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    border: 1px solid rgb(var(--border));
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+  }
+
+  .dark .card {
+    background-color: rgb(var(--surface-card));
+    border-color: rgb(var(--border));
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  }
+
+  .card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .dark .card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  }
+}

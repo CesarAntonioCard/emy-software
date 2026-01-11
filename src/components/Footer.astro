@@ -1,0 +1,148 @@
+---
+import { Facebook, Twitter, Linkedin, Mail, Phone } from "@lucide/astro";
+import logo from "../assets/logo.png";
+import { Image } from "astro:assets";
+
+const currentYear = new Date().getFullYear();
+
+const footerLinks = {
+  empresa: [
+    { name: "Sobre Nosotros", href: "#nosotros" },
+    { name: "Servicios", href: "#servicios" },
+    { name: "Contacto", href: "#contacto" },
+  ],
+  servicios: [
+    { name: "Desarrollo de Software a Medida", href: "#servicios" },
+    { name: "Análisis y Diseño de Sistemas", href: "#servicios" },
+    { name: "Capacitación en Software", href: "#servicios" },
+    { name: "Asesoría para PYMES", href: "#servicios" },
+    { name: "Aplicaciones con SQL Server", href: "#servicios" },
+  ],
+};
+
+const socialLinks = [
+  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Twitter, href: "#", label: "Twitter" },
+];
+---
+
+<footer
+  class="bg-[rgb(var(--surface-white))] dark:bg-[rgb(var(--surface-card))]
+         border-t border-[rgb(var(--border))] dark:border-[rgb(var(--border))]
+         text-[rgb(var(--text-primary))]
+         transition-all duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+      <div>
+        <div class="mb-4">
+          <div
+            class="inline-flex items-center justify-center p-2 rounded-lg
+                   bg-white dark:bg-white
+                   shadow-md dark:shadow-lg transition-all duration-300"
+          >
+            <Image
+              src={logo}
+              alt="EmySoftware"
+              width={84}
+              height={84}
+              class="rounded-md"
+            />
+          </div>
+        </div>
+
+        <p
+          class="text-sm leading-relaxed text-[rgb(var(--text-muted))] mb-5 max-w-xs"
+        >
+          Ayudamos a pequeñas y medianas empresas a diseñar, desarrollar y
+          mejorar aplicaciones comerciales mediante soluciones de software
+          confiables.
+        </p>
+
+        <div class="flex gap-3">
+          {
+            socialLinks.map(({ icon: Icon, href, label }) => (
+              <a
+                href={href}
+                aria-label={label}
+                class="w-10 h-10 rounded-lg flex items-center justify-center
+                       bg-[rgb(var(--surface-muted))] dark:bg-[rgb(var(--surface-muted))]
+                       hover:bg-[rgb(var(--accent))] dark:hover:bg-[rgb(var(--accent))]
+                       transition-all duration-300 group"
+              >
+                <Icon class="w-4 h-4 text-[rgb(var(--text-primary))] group-hover:text-white transition-colors" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-4 text-[rgb(var(--text-primary))]">
+          Empresa
+        </h3>
+        <ul class="space-y-2 text-sm">
+          {
+            footerLinks.empresa.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-[rgb(var(--text-muted))] hover:text-[rgb(var(--accent))] transition-colors"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-4 text-[rgb(var(--text-primary))]">
+          Servicios
+        </h3>
+        <ul class="space-y-2 text-sm">
+          {
+            footerLinks.servicios.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-[rgb(var(--text-muted))] hover:text-[rgb(var(--accent))] transition-colors"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-4 text-[rgb(var(--text-primary))]">
+          Contacto
+        </h3>
+        <ul class="space-y-3 text-sm text-[rgb(var(--text-muted))]">
+          <li class="flex items-center gap-2">
+            <Mail class="w-4 h-4 text-[rgb(var(--text-primary))]" />
+            contacto@emysoftware.com
+          </li>
+          <li class="flex items-center gap-2">
+            <Phone class="w-4 h-4 text-[rgb(var(--text-primary))]" />
+            +51 998 629 365
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="border-t border-[rgb(var(--border))] dark:border-[rgb(var(--border))]
+             pt-6 flex flex-col sm:flex-row justify-between
+             text-xs text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))]
+             transition-all duration-300"
+    >
+      <span>© {currentYear} EmySoftware</span>
+      <span>Software a medida · Capacitación · PYMES</span>
+    </div>
+  </div>
+</footer>

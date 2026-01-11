@@ -1,0 +1,160 @@
+---
+import { CheckCircle2, Users, Rocket, Headphones } from "@lucide/astro";
+import { Image } from "astro:assets";
+import nosotros from "../assets/nosotros.webp";
+
+const features = [
+  {
+    icon: CheckCircle2,
+    title: "Calidad Garantizada",
+    description: "Código limpio y bien documentado con pruebas exhaustivas.",
+  },
+  {
+    icon: Users,
+    title: "Equipo Experto",
+    description: "Profesionales certificados con años de experiencia.",
+  },
+  {
+    icon: Rocket,
+    title: "Entrega Rápida",
+    description: "Metodologías ágiles para resultados en tiempo récord.",
+  },
+  {
+    icon: Headphones,
+    title: "Soporte 24/7",
+    description: "Estamos siempre disponibles para ayudarte.",
+  },
+];
+---
+
+<section
+  id="nosotros"
+  class="py-20
+        bg-linear-to-br from-gray-50 to-green-50
+         dark:from-[rgb(var(--surface))] dark:to-[rgb(var(--surface-muted))]
+         transition-colors duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div
+        class="order-2 lg:order-1 relative rounded-2xl overflow-hidden shadow-2xl"
+      >
+        <div
+          class="absolute inset-0 bg-linear-to-br from-blue-400/20 to-purple-400/20 rounded-3xl blur-3xl"
+        >
+        </div>
+        <Image
+          src={nosotros}
+          alt="Nuestro equipo de desarrollo de software"
+          width={600}
+          height={400}
+          class="relative w-full h-auto object-cover rounded-2xl"
+        />
+      </div>
+
+      <div class="order-1 lg:order-2 space-y-8">
+        <div>
+          <span
+            class="text-[rgb(var(--accent))] dark:text-[rgb(var(--accent-strong))]
+                   font-semibold text-sm uppercase tracking-wide"
+          >
+            ¿Por qué elegirnos?
+          </span>
+          <h2
+            class="mt-3 text-3xl md:text-4xl font-bold
+                   text-[rgb(var(--text-primary))] dark:text-[rgb(var(--text-primary))]"
+          >
+            Excelencia en cada proyecto
+          </h2>
+          <p
+            class="mt-4 text-lg text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))]"
+          >
+            Nos comprometemos a entregar soluciones que superen tus
+            expectativas. Nuestro enfoque centrado en el cliente garantiza
+            resultados excepcionales.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          {
+            features.map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <div class="flex gap-4">
+                  <div class="shrink-0">
+                    <div
+                      class="
+              w-12 h-12 rounded-xl
+              flex items-center justify-center
+              bg-[rgb(var(--accent))] dark:bg-linear-to-br dark:from-[rgb(var(--accent))] dark:to-[rgb(var(--accent-strong))]
+              shadow-md dark:shadow-lg transition-all duration-300
+            "
+                    >
+                      <Icon class="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-[rgb(var(--text-primary))] dark:text-[rgb(var(--text-primary))] mb-1">
+                      {feature.title}
+                    </h3>
+                    <p class="text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))]">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-20 grid md:grid-cols-3 gap-12 text-center">
+      <div class="space-y-3">
+        <h3
+          class="text-xl font-bold text-[rgb(var(--text-primary))] dark:text-[rgb(var(--text-primary))]"
+        >
+          Misión
+        </h3>
+        <p
+          class="text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))]"
+        >
+          Desarrollo de programas informáticos que faciliten el servicio/gestión
+          contable, aplicados en la micro, pequeña y mediana empresa, y,
+          prestación de servicios de capacitación, implementación y soluciones a
+          la medida de su empresa. Asesoría educativa para desarrollo de
+          aplicaciones comerciales.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <h3
+          class="text-xl font-bold text-[rgb(var(--text-primary))] dark:text-[rgb(var(--text-primary))]"
+        >
+          Visión
+        </h3>
+        <p
+          class="text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))]"
+        >
+          Ser una empresa líder en software de contabilidad, acorde con las
+          últimas modificaciones Sunat y exigencias empresariales.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <h3
+          class="text-xl font-bold text-[rgb(var(--text-primary))] dark:text-[rgb(var(--text-primary))]"
+        >
+          Quiénes Somos
+        </h3>
+        <p
+          class="text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))]"
+        >
+          Somos una empresa dedicada al desarrollo y comercialización de
+          software de gestión contable, brindamos asesoramiento en todo lo
+          concerniente al desarrollo de aplicaciones comerciales
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
