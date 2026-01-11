@@ -175,7 +175,7 @@ Características:
                 <div class="mb-6">
                   <div
                     class="inline-flex items-center justify-center w-12 h-12 rounded-xl 
-                              bg-gradient-to-br from-[rgb(var(--accent))] to-[rgb(var(--accent-strong))]
+                              bg-linear-to-br from-[rgb(var(--accent))] to-[rgb(var(--accent-strong))]
                               mb-4 shadow-lg"
                   >
                     <svg
@@ -199,7 +199,7 @@ Características:
                   >
                     {product.name}
                   </h3>
-                  <div class="h-1 w-20 bg-gradient-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent-strong))] rounded-full" />
+                  <div class="h-1 w-20 bg-linear-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent-strong))] rounded-full" />
                 </div>
                 <p
                   class="text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))] 
@@ -218,7 +218,6 @@ Características:
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Open modal when clicking "Más información" button
     document.querySelectorAll("[data-modal-trigger]").forEach((button) => {
       const modalId = button.getAttribute("data-modal-trigger");
       if (!modalId) return;
