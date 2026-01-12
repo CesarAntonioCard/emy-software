@@ -137,12 +137,16 @@ const socialLinks = [
 
     <div
       class="border-t border-[rgb(var(--border))] dark:border-[rgb(var(--border))]
-             pt-6 flex flex-col sm:flex-row justify-between
-             text-xs text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))]
-             transition-all duration-300"
+            pt-6 flex flex-col sm:flex-row justify-between
+            text-xs text-[rgb(var(--text-muted))] dark:text-[rgb(var(--text-muted))]"
     >
-      <span>© {currentYear} EmySoftware</span>
+      <span>© <span id="current-year">2025</span> EmySoftware</span>
       <span>Software a medida · Capacitación · PYMES</span>
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  const yearEl = document.getElementById("current-year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
